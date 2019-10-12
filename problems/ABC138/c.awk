@@ -25,20 +25,14 @@ function reverse(A, l, B,   i) {
   return;
 }
 
-# max(A: array, l: int)
-function max(A, l,   i) {
-  res = A[1];
-  for (i = 2; i <= l; i++) {
-    if (res < A[i]) res = A[i];
+NR == 1 { n = $0; }
+NR == 2 { split($0, V); exit; }
+END {
+  bsort(V, n);
+  ans = V[1];
+  for (i = 2; i <= n; i++) {
+    ans += V[i];
+    ans /= 2.0;
   }
-  return res;
-}
-
-# min(A: array, l: int)
-function min(A, l,   i) {
-  res = A[1];
-  for (i = 2; i <= l; i++) {
-    if (res > A[i]) res = A[i];
-  }
-  return res;
+  print ans;
 }

@@ -1,3 +1,24 @@
+# NR == 1 { a = $1; b = $2; exit; }
+# END {
+#   plus = a + b;
+#   minus = a - b;
+#   prod = a * b;
+
+#   if (plus > minus) {
+#     if (plus > prod) {
+#       print plus;
+#     } else {
+#       print prod;
+#     }
+#   } else {
+#     if (minus > prod) {
+#       print minus;
+#     } else {
+#       print prod;
+#     }
+#   }
+# }
+
 # printlist(A: array, l: int)
 function printlist(A, l,   i) {
   for (i = 1; i <= l; i++) {
@@ -41,4 +62,13 @@ function min(A, l,   i) {
     if (res > A[i]) res = A[i];
   }
   return res;
+}
+
+NR == 1 { a = $1; b = $2; exit; }
+END {
+  A[1] = a + b;
+  A[2] = a - b;
+  A[3] = a * b;
+
+  print max(A, 3);
 }

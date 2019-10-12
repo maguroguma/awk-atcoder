@@ -25,20 +25,12 @@ function reverse(A, l, B,   i) {
   return;
 }
 
-# max(A: array, l: int)
-function max(A, l,   i) {
-  res = A[1];
-  for (i = 2; i <= l; i++) {
-    if (res < A[i]) res = A[i];
+NR == 1 { k = $1; x = $2; exit; }
+END {
+  counter = 1;
+  for (i = x-k+1; i <= x+k-1; i++) {
+    A[counter] = i;
+    counter++;
   }
-  return res;
-}
-
-# min(A: array, l: int)
-function min(A, l,   i) {
-  res = A[1];
-  for (i = 2; i <= l; i++) {
-    if (res > A[i]) res = A[i];
-  }
-  return res;
+  printlist(A, 2*k-1);
 }
